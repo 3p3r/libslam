@@ -16,7 +16,7 @@ SET(SLAM_SOURCES "${SLAM_ROOT}/sources")
 SET(SLAM_THIRDPARTY "${SLAM_ROOT}/thirdparty")
 
 # Root project name
-PROJECT(libslam CXX)
+PROJECT(libslam)
 
 # This is where we store all our cmake modules
 LIST(APPEND CMAKE_MODULE_PATH
@@ -37,7 +37,7 @@ INCLUDE_DIRECTORIES(
     "${SLAM_SOURCES}/include")
 
 # Silence G2O / Eigen warnings
-ADD_DEFINITIONS("-Wno-deprecated-declarations" "-Wno-deprecated")
+ADD_DEFINITIONS("-Wno-deprecated-declarations" "-Wno-deprecated" "-O3")
 
 # Setup linker inputs (variables set by BuildThirdparty script)
 SET(AUX_LIBS ${DBoW3_LIBRARIES} ${G2O_LIBRARY} ${OpenCV_LIBS})

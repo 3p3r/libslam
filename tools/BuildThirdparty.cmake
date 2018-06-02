@@ -4,17 +4,17 @@ INCLUDE(TryBuildAndInstall)
 
 # ______________________________________________________________________________
 # Eigen3
-SET(Eigen_ROOT "${LUMA_SLAM_THIRDPARTY}/eigen")
+SET(Eigen_ROOT "${SLAM_THIRDPARTY}/eigen")
 FIND_PACKAGE(Eigen REQUIRED)
 
 # ______________________________________________________________________________
 # Random
-SET(Random_ROOT "${LUMA_SLAM_THIRDPARTY}/random")
+SET(Random_ROOT "${SLAM_THIRDPARTY}/random")
 FIND_PACKAGE(Random REQUIRED)
 
 # ______________________________________________________________________________
 # g2o
-SET(G2O_ROOT "${LUMA_SLAM_THIRDPARTY}/g2o")
+SET(G2O_ROOT "${SLAM_THIRDPARTY}/g2o")
 
 TRY_BUILD_AND_INSTALL("${G2O_ROOT}" FLAGS
     "-Dg2o_EIGEN3_INCLUDE=${Eigen_INCLUDE_DIR}"
@@ -26,7 +26,7 @@ FIND_PACKAGE(G2O REQUIRED)
 
 # ______________________________________________________________________________
 # OpenCV
-SET(OpenCV_ROOT "${LUMA_SLAM_THIRDPARTY}/opencv")
+SET(OpenCV_ROOT "${SLAM_THIRDPARTY}/opencv")
 
 TRY_BUILD_AND_INSTALL("${OpenCV_ROOT}" FLAGS
     -DBUILD_WITH_DEBUG_INFO=OFF
@@ -63,7 +63,7 @@ FIND_PACKAGE(OpenCV REQUIRED NO_DEFAULT_PATH)
 
 # ______________________________________________________________________________
 # DBoW3
-SET(DBoW3_ROOT "${LUMA_SLAM_THIRDPARTY}/dbow3")
+SET(DBoW3_ROOT "${SLAM_THIRDPARTY}/dbow3")
 
 TRY_BUILD_AND_INSTALL("${DBoW3_ROOT}" FLAGS
     "-DINSTALL_DOC=OFF"
