@@ -1,0 +1,12 @@
+[submodule "thirdparty/opencv"]
+	path = thirdparty/opencv
+	url = https://github.com/opencv/opencv.git
+[submodule "thirdparty/eigen"]
+	path = thirdparty/eigen
+	url = https://github.com/eigenteam/eigen-git-mirror.git
+[submodule "thirdparty/dbow3"]
+	path = thirdparty/dbow3
+	url = https://github.com/rmsalinas/DBow3.git
+[submodule "thirdparty/random"]
+	path = thirdparty/random
+	url = https://github.com/effolkronium/random.git
