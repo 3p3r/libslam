@@ -1,0 +1,34 @@
+%YAML:1.0
+
+Camera.fx: 560.3024
+Camera.fy: 554.8278
+Camera.cx: 305.4531
+Camera.cy: 212.5053
+
+Camera.k1: -0.0417
+Camera.k2: -0.1300
+Camera.k3: 0.4197
+Camera.p1: -0.0111
+Camera.p2: -8.4596e-04
+
+Camera.fps: 60.0
+
+# 0: BGR, 1: RGB.
+Camera.RGB: 1
+
+ORBextractor.nFeatures: 1000
+ORBextractor.scaleFactor: 1.2
+ORBextractor.nLevels: 8
+ORBextractor.iniThFAST: 20
+ORBextractor.minThFAST: 7
+
+Viewer.KeyFrameSize: 0.05
+Viewer.KeyFrameLineWidth: 1
+Viewer.GraphLineWidth: 0.9
+Viewer.PointSize:2
+Viewer.CameraSize: 0.08
+Viewer.CameraLineWidth: 3
+Viewer.ViewpointX: 0
+Viewer.ViewpointY: -0.7
+Viewer.ViewpointZ: -1.8
+Viewer.ViewpointF: 500
