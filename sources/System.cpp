@@ -1,4 +1,5 @@
 #include "System.h"
+#include "Converter.h"
 
 namespace ORB_SLAM2 {
 
@@ -25,7 +26,7 @@ System::System(const std::string &strSettingsJson) :
     std::cout << "Vocabulary from: " << strVocFile << std::endl;
     mpVocabulary.load(strVocFile);
     std::cout << "Vocabulary loaded!" << std::endl;
-  } catch (const std::exception& ex) {
+  } catch (const std::exception &ex) {
     std::cerr << "Wrong path to vocabulary. " << std::endl;
     std::cerr << "Error: " << ex.what() << std::endl;
     exit(-1);
@@ -153,6 +154,29 @@ std::vector<MapPoint *> System::GetTrackedMapPoints() {
 std::vector<cv::KeyPoint> System::GetTrackedKeyPointsUn() {
   std::unique_lock<std::mutex> lock(mMutexState);
   return mTrackedKeyPointsUn;
+}
+
+void System::SaveKeyFrameTrajectoryTUM(const std::string &filename) {
+  std::vector<KeyFrame *> vpKFs = mpMap->GetAllKeyFrames();
+  sort(vpKFs.begin(), vpKFs.end(), KeyFrame::lId);
+
+  std::ofstream f(filename);
+  f << std::fixed;
+
+  for (auto pKF : vpKFs) {
+    if (pKF->isBad())
+      continue;
+
+    cv::Mat R = pKF->GetRotation().t();
+    std::vector<float> q = Converter::toQuaternion(R);
+    cv::Mat t = pKF->GetCameraCenter();
+    f << std::setprecision(6)
+      << pKF->mTimeStamp
+      << std::setprecision(7)
+      << " " << t.at<float>(0) << " " << t.at<float>(1) << " " << t.at<float>(2)
+      << " " << q[0] << " " << q[1] << " " << q[2] << " " << q[3]
+      << std::endl;
+  }
 }
 
 } //namespace ORB_SLAM

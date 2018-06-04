@@ -56,6 +56,9 @@ class System {
   // Get ORB settings
   const Settings& GetSettings() const { return mSettings; }
 
+  // Saves keyframe trajectories in the TUM data format
+  void SaveKeyFrameTrajectoryTUM(const std::string &filename);
+
  private:
   int mMapLastBigChangeIdx;
   int mTrackingState;
